@@ -1,4 +1,5 @@
-version: '1'
+version: '3.8'
+
 services:
   microservicio:
     build:
@@ -6,11 +7,10 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8081:8081"
-    environment:
-      - spring.datasource.url=jdbc:oracle:thin:@et2xa97ns8rti1vt_tp?TNS_ADMIN=/app/oracle_wallet/
-      - spring.datasource.username=duoc_fullstack
-      - spring.datasource.password="Eduardocr#2610"
+    networks:
+      - message-service_rabbitmq_network
     restart: always
 
-
-    
+networks:
+  message-service_rabbitmq_network:
+    external: true
