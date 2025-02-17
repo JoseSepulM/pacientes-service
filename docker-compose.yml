@@ -6,11 +6,15 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "8081:8081"
+      - "8082:8082"
+    environment:
+      - spring.datasource.url=jdbc:oracle:thin:@et2xa97ns8rti1vt_tp?TNS_ADMIN=/app/oracle_wallet/
+      - spring.datasource.username=duoc_fullstack
+      - spring.datasource.password="Eduardocr#2610"
     networks:
-      - message-service_rabbitmq_network
+      - kafka_kafka-net
     restart: always
 
 networks:
-  message-service_rabbitmq_network:
+  kafka_kafka-net:
     external: true
